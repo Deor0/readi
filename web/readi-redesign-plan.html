@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>READI Redesign Plan</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;600;800&family=Mukta:wght@400;700&family=Poppins:wght@400;600;800&family=Noto+Serif+Devanagari:wght@600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-100); color: var(--color-base-content); }
+  section.block { scroll-margin-top: 5rem; }
+
+  /* ---- Direction mocks: each paints its own look ---- */
+  .mock { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); font-size: 13px; line-height: 1.45; }
+  .mock .bar { display:flex; justify-content:space-between; align-items:center; padding:10px 16px; gap:8px; flex-wrap:wrap; }
+  .mock .bar nav { display:flex; gap:12px; flex-wrap:wrap; }
+  .mock .hero { padding: 34px 18px 26px; position: relative; }
+  .mock .hero h4 { margin:0 0 8px; line-height:1.1; }
+  .mock .stats { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px; padding: 0 18px 18px; }
+  .mock .stat b { display:block; font-size: 20px; }
+  .mock .cards { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px; padding: 0 18px 20px; }
+  .mock .card { border-radius:8px; padding:10px; min-height:70px; }
+  .mock .btn-x { display:inline-block; padding:8px 14px; border-radius:999px; font-weight:700; margin-top:12px; margin-right:6px; }
+
+  .m1 { background:#f7f9fb; color:#1e2a36; font-family: Inter, Mukta, sans-serif; }
+  .m1 .bar { background:#fff; border-bottom:1px solid #e3e8ee; }
+  .m1 .hero { background: linear-gradient(180deg, rgba(20,40,60,.15), rgba(20,40,60,.65)), url("photos/202918510_1154597508376324_6869359619713720123_n(1).jpg") center 30%/cover; color:#fff; }
+  .m1 .hero h4 { font-size: 26px; font-weight: 800; }
+  .m1 .btn-x.p { background:#f2a516; color:#1e2a36; } .m1 .btn-x.s { border:1px solid #fff; color:#fff; }
+  .m1 .stats { margin-top: -14px; } .m1 .stat { background:#fff; border-radius:10px; padding:10px; box-shadow:0 4px 14px rgba(30,42,54,.1); }
+  .m1 .stat b { color:#2c6e9b; } .m1 .card { background:#fff; border-top:3px solid #2c6e9b; }
+
+  .m2 { background:#f6f2ea; color:#1d2433; font-family: Inter, sans-serif; }
+  .m2 .bar { border-bottom: 1px solid #1d2433; }
+  .m2 .hero h4 { font-family: Fraunces, 'Noto Serif Devanagari', serif; font-size: 28px; font-weight:700; }
+  .m2 .eyebrow { text-transform:uppercase; letter-spacing:.12em; font-size:10px; color:#b5543a; font-weight:600; }
+  .m2 .btn-x.p { background:#1d2433; color:#f6f2ea; border-radius:4px; } .m2 .btn-x.s { border-bottom:2px solid #b5543a; border-radius:0; padding-left:0; padding-right:0; }
+  .m2 .stat { border-left:3px solid #b5543a; padding:4px 10px; } .m2 .stat b { font-family:Fraunces,serif; }
+  .m2 .stat small { display:block; color:#6b6f7a; font-size:10px; }
+  .m2 .card { border:1px solid #cfc6b5; background:#fbf8f2; }
+
+  .m3 { background:#fff8ec; color:#2a1a14; font-family: Poppins, sans-serif; }
+  .m3 .bar { background:#b3202e; color:#fff; }
+  .m3 .weave { height:10px; background: repeating-linear-gradient(90deg,#b3202e 0 14px,#f2a516 14px 28px,#1f6b4a 28px 42px,#2a1a14 42px 48px); }
+  .m3 .hero { background:#1f6b4a; color:#fff8ec; }
+  .m3 .hero h4 { font-size: 26px; font-weight: 800; }
+  .m3 .appeal { display:inline-block; background:#f2a516; color:#2a1a14; font-weight:700; font-size:10px; padding:3px 8px; border-radius:4px; margin-bottom:8px; }
+  .m3 .btn-x.p { background:#b3202e; color:#fff; border-radius:6px; } .m3 .btn-x.s { background:#fff8ec; color:#1f6b4a; border-radius:6px; }
+  .m3 .stats { padding-top:16px; } .m3 .stat { background:#fff; border:2px solid #2a1a14; border-radius:8px; padding:8px; } .m3 .stat b { color:#b3202e; }
+  .m3 .card:nth-child(1){background:#b3202e;color:#fff} .m3 .card:nth-child(2){background:#f2a516} .m3 .card:nth-child(3){background:#1f6b4a;color:#fff}
+
+  .swatch { width: 22px; height: 22px; border-radius: 6px; display:inline-block; border:1px solid rgba(255,255,255,.2); }
+  .opt input:checked + .opt-body { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+</style>
+<script type="application/json" data-lavish-revisions>
+[{ "id": "r1", "label": "Round 1", "timestamp": "2026-11-23T12:00:00Z", "summary": "Added Facebook findings: 2008 founding, Japan-funded children's home, real photos" }]
+</script>
+</head>
+<body class="min-h-screen">
+
+<div class="navbar bg-base-200 sticky top-0 z-10 px-4 gap-2 flex-wrap">
+  <span class="font-bold text-lg">READI Nepal · Redesign plan</span>
+  <div class="flex flex-wrap gap-1 text-sm ml-auto">
+    <a class="link link-hover px-2" href="#snapshot">Snapshot</a>
+    <a class="link link-hover px-2" href="#findings">Findings</a>
+    <a class="link link-hover px-2" href="#audit">Audit</a>
+    <a class="link link-hover px-2" href="#inspiration">Inspiration</a>
+    <a class="link link-hover px-2" href="#ia">New sitemap</a>
+    <a class="link link-hover px-2" href="#directions">Directions</a>
+    <a class="link link-hover px-2" href="#decisions">Decisions</a>
+    <a class="link link-hover px-2" href="#roadmap">Roadmap</a>
+  </div>
+</div>
+
+<main class="max-w-6xl mx-auto px-4 py-8 space-y-14">
+
+<!-- GOAL -->
+<header class="space-y-3">
+  <div class="badge badge-primary badge-soft">Plan · draft 1</div>
+  <h1 class="text-3xl md:text-4xl font-bold">Turn readi.org.np from a 2016 brochure into a site that earns trust and donations</h1>
+  <p class="opacity-80 max-w-3xl">The current site is a WordPress 4.5 install on the Sydney theme. Most of its content dates from July 2016, it has no donate path, no team page, no reports, and it is English only. The new site should make three things easy: understanding what READI does in Karnali, trusting READI with money, and joining as a donor, volunteer or partner.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
+    <div class="card bg-base-200"><div class="card-body p-4"><h3 class="font-semibold">1 · Understand</h3><p class="text-sm opacity-80">Visitors see READI's work in under 10 seconds: Humla, children, nutrition, education, disaster relief.</p></div></div>
+    <div class="card bg-base-200"><div class="card-body p-4"><h3 class="font-semibold">2 · Trust</h3><p class="text-sm opacity-80">Registration, team, numbers with sources, reports and partners are all visible on the site.</p></div></div>
+    <div class="card bg-base-200"><div class="card-body p-4"><h3 class="font-semibold">3 · Act</h3><p class="text-sm opacity-80">Donate (from Nepal and abroad), volunteer, or get in touch, each in at most two clicks.</p></div></div>
+  </div>
+</header>
+
+<!-- SNAPSHOT -->
+<section id="snapshot" class="block space-y-4">
+  <h2 class="text-2xl font-bold">What READI is</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="card bg-base-200"><div class="card-body p-5 text-sm space-y-2">
+      <p><b>Rural Empowerment and Development Initiative (READI Nepal).</b> A volunteer-run Nepali NGO founded by young people from <b>Humla</b> (Karnali). It has a P.O. box in Kathmandu.</p>
+      <p><b>Mission:</b> "Empowering people to transform their lives." The goal is a self-reliant Nepal built through human capital, local economies, community voice and technology.</p>
+      <p><b>Where it works:</b> Simikot (Humla) and Changunarayan (Bhaktapur). Relief work covered the 2015 earthquake areas (Sindhupalchowk, Rasuwa, Gorkha) and Jajarkot in 2023.</p>
+      <p><b>Partners named on the site:</b> Maresia de Tenerife Nepal ONG, AIPC Pandora (Madrid), DHO Humla and the District Hospital. An "Action Aid" link is implied but never explained.</p>
+    </div></div>
+    <div class="space-y-3">
+      <div class="stats stats-vertical sm:stats-horizontal bg-base-200 w-full">
+        <div class="stat"><div class="stat-title">SAM cases found</div><div class="stat-value text-primary">336</div><div class="stat-desc">IMAM Humla, 2016</div></div>
+        <div class="stat"><div class="stat-title">MAM cases identified</div><div class="stat-value">1,012</div><div class="stat-desc">IMAM Humla, 2016</div></div>
+        <div class="stat"><div class="stat-title">Daily school lunches</div><div class="stat-value">40</div><div class="stat-desc">3 yrs, Changunarayan</div></div>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="badge badge-primary">Children's home (flagship)</span><span class="badge badge-outline">Education</span><span class="badge badge-outline">Nutrition &amp; health</span><span class="badge badge-outline">WASH</span><span class="badge badge-outline">Humanitarian relief</span><span class="badge badge-outline">Local economy (Humla Delights Bakery)</span><span class="badge badge-outline">Volunteer program</span><span class="badge badge-outline">Policy advocacy</span><span class="badge badge-outline">Appropriate tech</span>
+      </div>
+      <div class="alert alert-warning alert-soft text-sm">These are the only numbers on the whole site, and they are buried inside one page. Founding year, registration number and team are not shown anywhere.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section id="findings" class="block space-y-4" data-lavish-revision="r1">
+  <h2 class="text-2xl font-bold">New findings from Facebook</h2>
+  <p class="text-sm opacity-70">Source: the saved READI NEPAL Facebook page (150 followers) and the Embassy of Japan's post that it shares. The live Facebook page is <code>facebook.com/readi.np</code>. The website links to <code>/readinepal</code>, which is dead. Instagram @readinepal has 1 follower and no posts.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="card bg-base-200"><div class="card-body p-5">
+      <h3 class="font-semibold">The story the website is missing</h3>
+      <ul class="timeline timeline-vertical timeline-compact text-sm">
+        <li><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>2008</b>: READI founded in Humla. It runs a children's home in a rented building in Simikot, providing shelter and schooling.</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Dec 2010</b>: <b>Humla's first library</b> opens at the Simikot school, with TRAS, the Nepal Library Foundation and Rato Bangala School. TRAS also funds the Humla Delights café, whose profits go to the hostel.</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>2018</b>: READI gives a USD 7,000 grant to the Sapura Dream Foundation school in Humla (Elon University news)</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Jul 2019</b>: First Maresía (Tenerife) volunteer camp in Changunarayan, which renovates the kitchen and dining room. €15 a month feeds one child.</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Sep 2017</b>: Healthy-baby competition with Simkot Gaupalika (READI provided technical support). GoFundMe "READI Nepal Children's Fund".</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Nov 2020</b>: COVID food and supplies for families of Shree Krishna Basic School, Changunarayan</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Jun 2021</b>: Emergency life-saving health equipment, including oxygen concentrators, for COVID in Humla</div><hr></li>
+        <li><hr><div class="timeline-middle">●</div><div class="timeline-end mb-3"><b>Dec 2023</b>: Jajarkot earthquake relief</div><hr></li>
+        <li><hr><div class="timeline-middle text-primary">★</div><div class="timeline-end"><b>11 Dec 2024</b>: The Government of Japan (GGP) funds a <b>new children's home in Simikot: USD 124,267 (about NPR 13.5M), permanent home for 30 children</b>, which doubles as a community training centre</div></li>
+      </ul>
+    </div></div>
+    <div class="space-y-3">
+      <div class="alert alert-success alert-soft text-sm"><span><b>This changes the plan.</b> The flagship is the <b>children's home</b>, which the current website never mentions. It should be the hero story, backed by a credible institutional donor (Embassy of Japan) and a concrete number (30 children).</span></div>
+      <div class="card bg-base-200"><div class="card-body p-4 text-sm gap-1">
+        <h3 class="font-semibold">Trust signals we can now show</h3>
+        <p><b>Donors and partners:</b> Government of Japan (GGP), Trans-Himalayan Aid Society (TRAS, Vancouver, a donor since about 2010 that covers about 90% of the home's costs), Maresía ONG (Tenerife), Nepal Library Foundation, DHO Humla.</p>
+        <p><b>Press:</b> The Himalayan Times, Spotlight Nepal and Ratopati (Dec 2024 handover). The Nepali press spells the name <b>रेडि हुम्ला</b>, and the Nepali version should use that spelling.</p>
+        <p class="opacity-70"><b>Sources disagree on:</b> 20 vs 30 children in the home, "Primary" vs "Basic" school, and whether Humla Delights is still READI's. No registration number and no 2025–26 activity were found anywhere. Ask READI.</p>
+      </div></div>
+      <div class="grid grid-cols-3 gap-2">
+        <img src="photos/483729107_951353633828613_9215868314964983935_n.jpg" alt="READI team and community members in front of the new children's home in Simikot" class="rounded-lg aspect-square object-cover w-full">
+        <img src="photos/483620374_951353620495281_6999974544623100545_n.jpg" alt="Unveiling the plaque at the children's home handover, December 2024" class="rounded-lg aspect-square object-cover w-full">
+        <img src="photos/202918510_1154597508376324_6869359619713720123_n(1).jpg" alt="Snow peak and pine forest in Humla" class="rounded-lg aspect-square object-cover w-full">
+        <img src="photos/203928229_1154597371709671_1613273478666038596_n.jpg" alt="READI volunteers with oxygen concentrators for Humla, 2021" class="rounded-lg aspect-square object-cover w-full">
+        <img src="photos/125497810_1017962662039810_2788176921340366475_n.jpg" alt="Families carrying COVID food supplies, Changunarayan 2020" class="rounded-lg aspect-square object-cover w-full">
+        <img src="photos/483580132_951353833828593_1940109356313713123_n.jpg" alt="Children's home handover, December 2024" class="rounded-lg aspect-square object-cover w-full">
+      </div>
+      <p class="text-xs opacity-70">22 photos copied into <code>.lavish/photos/</code>. They are only about 600px wide (Facebook previews), which is fine for cards but <b>too small for a full-width hero</b>. Ask READI for the originals. Photos showing children need consent before publishing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT -->
+<section id="audit" class="block space-y-4">
+  <h2 class="text-2xl font-bold">Current site audit</h2>
+  <p class="text-sm opacity-70">The site has about 13 pages: Home · About · Gallery · Programs (Nutrition &amp; Health, Education, Volunteer, plus School Support linked only from Home) · Blog (4 posts) · Contact.</p>
+  <div class="overflow-x-auto">
+  <table class="table table-sm bg-base-200 rounded-box">
+    <thead><tr><th>Severity</th><th>Problem</th><th>Fix in redesign</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge badge-error badge-sm">Critical</span></td><td>WordPress 4.5.32 (2016) and jQuery 1.12. It is unpatched and a security risk. http does not redirect to https.</td><td>New platform with HTTPS only (see decisions)</td></tr>
+      <tr><td><span class="badge badge-error badge-sm">Critical</span></td><td>No Donate page or button (<code>/donate/</code> returns 404). The only way to give is bank details inside the Contact page.</td><td>Donate page with eSewa/Khalti and card, plus a header button</td></tr>
+      <tr><td><span class="badge badge-warning badge-sm">High</span></td><td>No team, registration, reports or financials (<code>/team/</code> returns 404)</td><td>An "Who we are" page and a "Transparency" page</td></tr>
+      <tr><td><span class="badge badge-warning badge-sm">High</span></td><td>The Programs page doesn't list the programs. Education is nearly empty, and School Support is not in the menu.</td><td>Program index with cards, plus a page template for each program</td></tr>
+      <tr><td><span class="badge badge-warning badge-sm">High</span></td><td>English only (<code>lang="en-US"</code>)</td><td>Full Nepali version linked by a "नेपाली" toggle</td></tr>
+      <tr><td><span class="badge badge-warning badge-sm">High</span></td><td>Content is stale: © 2018, most content from 2016, 2 of 4 blog posts empty, authored by the default "aDmiNs" user</td><td>Content audit and rewrite, with named authors</td></tr>
+      <tr><td><span class="badge badge-info badge-sm">Medium</span></td><td>The visible email (info@) and the mailto target (a gmail address) don't match. No phone number or map.</td><td>One contact source of truth</td></tr>
+      <tr><td><span class="badge badge-info badge-sm">Medium</span></td><td>Gallery: about 62 photos at 150px, captions are filenames, alt text missing, no albums</td><td>Albums per program, captions and alt text, WebP</td></tr>
+      <tr><td><span class="badge badge-info badge-sm">Medium</span></td><td>Five slider slides all say "Click to begin" and link to an on-page anchor. The header image is 580 KB. Images load over http.</td><td>One static hero with a clear CTA, optimised images</td></tr>
+      <tr><td><span class="badge badge-ghost badge-sm">Low</span></td><td>Typos ("childrens", "orgnaizations"), an empty Twitter embed, an outdated FB likebox, no coherent palette (#d63737 red, stray greens and blue), a JPG logo</td><td>Copy edit, SVG logo, design tokens</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- INSPIRATION -->
+<section id="inspiration" class="block space-y-4">
+  <h2 class="text-2xl font-bold">Inspiration: what to borrow</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <a href="https://teachfornepal.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Teach For Nepal</h3><span class="badge badge-sm">Nepal</span></div><p class="text-sm opacity-80">Donate form with amount chips, a once/monthly toggle, and <b>Stripe plus eSewa</b>. Annual report linked from the menu.</p></div></a>
+    <a href="https://kathmandulivinglabs.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Kathmandu Living Labs</h3><span class="badge badge-sm">Nepal</span></div><p class="text-sm opacity-80">A confident one-line hero, project cards tagged by theme, an "Insights" blog showing read time, and a row of partner logos.</p></div></a>
+    <a href="https://www.nepalyouthfoundation.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Nepal Youth Foundation</h3><span class="badge badge-sm">Nepal</span></div><p class="text-sm opacity-80">A <b>hero that switches into an urgent appeal</b> during disasters, giving tiers tied to outcomes, and annual impact numbers.</p></div></a>
+    <a href="https://www.brac.net/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">BRAC</h3><span class="badge badge-sm">South Asia</span></div><p class="text-sm opacity-80">A hopeful hero with documentary photos and large stat cards. The <b>language toggle is written in native script</b> ("বাংলা") and leads to a full mirror site.</p></div></a>
+    <a href="https://www.pratham.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Pratham / ASER</h3><span class="badge badge-sm">South Asia</span></div><p class="text-sm opacity-80">Research given its own brand and a publications library, plus a "Stories of Change" portrait grid.</p></div></a>
+    <a href="https://www.charitywater.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">charity: water</h3><span class="badge badge-sm">Global</span></div><p class="text-sm opacity-80"><b>Proof-based trust</b> (photos and GPS from every project), one dominant GIVE action, and amounts phrased as outcomes ("$20/mo covers a family").</p></div></a>
+    <a href="https://www.roomtoread.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Room to Read</h3><span class="badge badge-sm">Global</span></div><p class="text-sm opacity-80">The tagline is the hero, with one huge stat and a map. The story grid filters by theme and country.</p></div></a>
+    <a href="https://teachforall.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">Teach For All</h3><span class="badge badge-sm">Global</span></div><p class="text-sm opacity-80">Separate hero crops for desktop and mobile, simple icon cards, and a filterable partner map. Avoid its Google-Translate approach to other languages.</p></div></a>
+    <a href="https://www.givedirectly.org/" target="_blank" class="card bg-base-200 hover:bg-base-300"><div class="card-body p-4"><div class="flex justify-between gap-2"><h3 class="font-semibold">GiveDirectly</h3><span class="badge badge-sm">Global</span></div><p class="text-sm opacity-80">Evidence pillars: a number, a sentence, a photo and a research link. The <b>donate widget sits in the hero</b>. Story cards quote people by name.</p></div></a>
+  </div>
+  <div class="card bg-base-200"><div class="card-body p-5">
+    <h3 class="font-semibold">Patterns the best sites share, which READI currently lacks</h3>
+    <ul class="list-disc pl-5 text-sm space-y-1 opacity-90">
+      <li>A one-sentence promise and <b>one</b> main action in the hero</li>
+      <li>Large numbers near the top, each with a label and a source</li>
+      <li>Named people-first stories, photographed with consent</li>
+      <li>Transparency on the page itself: reports, registration, partners</li>
+      <li>Giving amounts phrased as outcomes ("Rs 1,500 = a month of lunches for one child")</li>
+      <li>A short main menu plus a utility row with language, search and Donate</li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- IA -->
+<section id="ia" class="block space-y-4">
+  <h2 class="text-2xl font-bold">Proposed sitemap</h2>
+  <p class="text-sm opacity-70">This cuts the menu to five items plus a persistent Donate button. Each existing page has a home in the new structure (shown in parentheses).</p>
+  <svg viewBox="0 0 1000 330" class="w-full bg-base-200 rounded-box" role="img" aria-label="Proposed sitemap tree">
+    <style>
+      .n{fill:var(--color-base-100);stroke:var(--color-base-content);stroke-opacity:.25}
+      .t{fill:var(--color-base-content);font:600 14px Inter,sans-serif}
+      .s{fill:var(--color-base-content);opacity:.7;font:12px Inter,sans-serif}
+      .l{stroke:var(--color-base-content);stroke-opacity:.3}
+      .d{fill:var(--color-primary)} .dt{fill:var(--color-primary-content);font:700 14px Inter,sans-serif}
+    </style>
+    <rect x="420" y="16" width="160" height="40" rx="8" class="n"/><text x="500" y="41" text-anchor="middle" class="t">Home</text>
+    <rect x="880" y="16" width="100" height="40" rx="20" class="d"/><text x="930" y="41" text-anchor="middle" class="dt">Donate</text>
+    <text x="830" y="41" text-anchor="middle" class="s">नेपाली | EN</text>
+    <g class="l">
+      <line x1="500" y1="56" x2="500" y2="84"/><line x1="100" y1="84" x2="900" y2="84"/>
+      <line x1="100" y1="84" x2="100" y2="100"/><line x1="300" y1="84" x2="300" y2="100"/><line x1="500" y1="84" x2="500" y2="100"/><line x1="700" y1="84" x2="700" y2="100"/><line x1="900" y1="84" x2="900" y2="100"/>
+    </g>
+    <g>
+      <rect x="20" y="100" width="160" height="40" rx="8" class="n"/><text x="100" y="125" text-anchor="middle" class="t">About</text>
+      <text x="30" y="166" class="s">• Story &amp; mission (About)</text><text x="30" y="186" class="s">• Team &amp; board (new)</text><text x="30" y="206" class="s">• Partners (new)</text><text x="30" y="226" class="s">• Transparency: reg. no.,</text><text x="42" y="244" class="s">audits, reports (new)</text>
+
+      <rect x="220" y="100" width="160" height="40" rx="8" class="n"/><text x="300" y="125" text-anchor="middle" class="t">Our work</text>
+      <text x="230" y="148" class="s" style="font-weight:700">★ READI Children's Home</text><text x="230" y="166" class="s">• Nutrition &amp; health</text><text x="230" y="186" class="s">• Education</text><text x="230" y="206" class="s">• School Support (moved)</text><text x="230" y="226" class="s">• Humanitarian relief</text><text x="230" y="246" class="s">• Local economy / WASH</text>
+
+      <rect x="420" y="100" width="160" height="40" rx="8" class="n"/><text x="500" y="125" text-anchor="middle" class="t">Where we work</text>
+      <text x="430" y="166" class="s">• Map: Humla, Bhaktapur,</text><text x="442" y="184" class="s">Jajarkot, 2015 districts</text><text x="430" y="206" class="s">• Project pins and photos</text>
+
+      <rect x="620" y="100" width="160" height="40" rx="8" class="n"/><text x="700" y="125" text-anchor="middle" class="t">Stories &amp; news</text>
+      <text x="630" y="166" class="s">• Blog (4 → rewritten)</text><text x="630" y="186" class="s">• Gallery as albums</text><text x="630" y="206" class="s">• Publications library</text>
+
+      <rect x="820" y="100" width="160" height="40" rx="8" class="n"/><text x="900" y="125" text-anchor="middle" class="t">Get involved</text>
+      <text x="830" y="166" class="s">• Volunteer program</text><text x="830" y="186" class="s">• Become a member</text><text x="830" y="206" class="s">• Partner with us</text><text x="830" y="226" class="s">• Contact</text>
+    </g>
+    <text x="20" y="300" class="s">Footer: newsletter sign-up · registration no. · address · socials · © current year (generated automatically)</text>
+  </svg>
+</section>
+
+<!-- DIRECTIONS -->
+<section id="directions" class="block space-y-4">
+  <div>
+    <h2 class="text-2xl font-bold">Pick a design direction</h2>
+    <p class="text-sm opacity-70">Each card below is a home-page hero mock drawn in that direction's palette and type. The numbers are real figures from the current site, and the photos are placeholder gradients. You can annotate any part of a mock.</p>
+  </div>
+
+  <form data-lavish-question="direction" class="space-y-4" onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('direction'); const n=f.get('direction-notes')||''; if(c) window.lavish?.queuePrompt('Go with design direction: '+c+(n?'. Notes: '+n:''), { tag:'choice', text:'Direction: '+c, element:event.currentTarget, data:{question:'direction', answer:c, notes:n} });">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+    <!-- 1 -->
+    <label class="opt cursor-pointer block">
+      <input type="radio" name="direction" value="Himalayan Light" class="sr-only">
+      <div class="opt-body card bg-base-200 h-full"><div class="card-body p-4 gap-3">
+        <div class="flex items-center justify-between gap-2"><h3 class="font-bold text-lg">1 · Himalayan Light</h3><span class="badge badge-primary">Recommended</span></div>
+        <div class="mock m1">
+          <div class="bar"><b>READI</b><nav><span>About</span><span>Our work</span><span>Get involved</span></nav><span style="color:#2c6e9b">नेपाली · <b style="background:#f2a516;color:#1e2a36;padding:3px 8px;border-radius:999px">Donate</b></span></div>
+          <div class="hero"><h4>A home, and a future, for 30 children in Humla.</h4><p style="opacity:.9">Since 2008, young people from Humla have given children shelter, schooling and healthcare where the roads end.</p><span class="btn-x p">Sponsor a child</span><span class="btn-x s">See our work</span></div>
+          <div class="stats"><div class="stat"><b>336</b>SAM cases found</div><div class="stat"><b>111</b>health workers trained</div><div class="stat"><b>40</b>daily lunches</div></div>
+          <div class="cards"><div class="card"><b>Nutrition</b><br>IMAM, Humla</div><div class="card"><b>Education</b><br>Books, food, fees</div><div class="card"><b>Relief</b><br>Jajarkot 2023</div></div>
+        </div>
+        <div class="flex gap-1 items-center text-xs"><span class="swatch" style="background:#f7f9fb"></span><span class="swatch" style="background:#2c6e9b"></span><span class="swatch" style="background:#f2a516"></span><span class="swatch" style="background:#1e2a36"></span><span class="opacity-70 ml-2">Inter + Mukta</span></div>
+        <p class="text-sm opacity-80">Calm and hopeful, built on wide landscape photography. Draws on charity: water, BRAC and Room to Read.</p>
+        <div class="text-sm"><b class="text-success">+</b> Appeals most to international donors and diaspora, and is the easiest to keep looking good.<br><b class="text-error">−</b> Depends on good photography, and the 2016 phone photos won't carry it. Needs a photo shoot or curated new images.</div>
+      </div></div>
+    </label>
+
+    <!-- 2 -->
+    <label class="opt cursor-pointer block">
+      <input type="radio" name="direction" value="Field Notes" class="sr-only">
+      <div class="opt-body card bg-base-200 h-full"><div class="card-body p-4 gap-3">
+        <h3 class="font-bold text-lg">2 · Field Notes</h3>
+        <div class="mock m2">
+          <div class="bar"><b style="font-family:Fraunces,serif;font-size:15px">READI Nepal</b><nav><span>Work</span><span>Evidence</span><span>Publications</span></nav><span>नेपाली · <b>Support →</b></span></div>
+          <div class="hero"><div class="eyebrow">Humla · Karnali · since the founders' youth</div><h4>Evidence from the last mile.</h4><p style="color:#4a5060">We treat, teach and measure, then publish what we learn so others can do it too.</p><span class="btn-x p">Read the 2016 IMAM report</span><span class="btn-x s">Support the work</span></div>
+          <div class="stats"><div class="stat"><b>1,012</b>MAM identified<small>IMAM Humla, 2016</small></div><div class="stat"><b>210</b>SAM admitted<small>OTP, DHO Humla</small></div><div class="stat"><b>3 yrs</b>school lunches<small>w/ Maresia ONG</small></div></div>
+          <div class="cards"><div class="card"><b>Report</b><br>Nutrition in Humla</div><div class="card"><b>Field note</b><br>Jajarkot relief</div><div class="card"><b>Brief</b><br>Rural schooling</div></div>
+        </div>
+        <div class="flex gap-1 items-center text-xs"><span class="swatch" style="background:#f6f2ea"></span><span class="swatch" style="background:#1d2433"></span><span class="swatch" style="background:#b5543a"></span><span class="swatch" style="background:#cfc6b5"></span><span class="opacity-70 ml-2">Fraunces + Inter + Noto Serif Devanagari</span></div>
+        <p class="text-sm opacity-80">Editorial and credible, like a think tank that also works in the field. Draws on Pratham/ASER, GiveDirectly and KLL.</p>
+        <div class="text-sm"><b class="text-success">+</b> Best for institutional donors and partners, and it works even with weak photography.<br><b class="text-error">−</b> READI publishes almost nothing today, so this direction only holds up if a steady flow of reports and field notes exists.</div>
+      </div></div>
+    </label>
+
+    <!-- 3 -->
+    <label class="opt cursor-pointer block">
+      <input type="radio" name="direction" value="Dhaka Weave" class="sr-only">
+      <div class="opt-body card bg-base-200 h-full"><div class="card-body p-4 gap-3">
+        <h3 class="font-bold text-lg">3 · Dhaka Weave</h3>
+        <div class="mock m3">
+          <div class="bar"><b>READI</b><nav><span>हाम्रो काम</span><span>Volunteer</span><span>Contact</span></nav><b>EN · Donate</b></div>
+          <div class="weave"></div>
+          <div class="hero"><span class="appeal">● Winter appeal: Jajarkot</span><h4>Humla-born. Karnali-strong.</h4><p>Young people from the mountains, building a self-reliant Nepal, one village at a time.</p><span class="btn-x p">Donate via eSewa / Khalti</span><span class="btn-x s">Volunteer</span></div>
+          <div class="stats"><div class="stat"><b>336</b>children treated</div><div class="stat"><b>111</b>trained</div><div class="stat"><b>2</b>quake responses</div></div>
+          <div class="cards"><div class="card"><b>Health</b></div><div class="card"><b>Schools</b></div><div class="card"><b>Relief</b></div></div>
+        </div>
+        <div class="flex gap-1 items-center text-xs"><span class="swatch" style="background:#b3202e"></span><span class="swatch" style="background:#f2a516"></span><span class="swatch" style="background:#1f6b4a"></span><span class="swatch" style="background:#fff8ec"></span><span class="opacity-70 ml-2">Poppins (Latin + Devanagari)</span></div>
+        <p class="text-sm opacity-80">Warm, energetic and clearly Nepali. Dhaka-textile dividers, colour-block cards and an urgent-appeal mode for the hero. Draws on NYF, Teach For Nepal and Room to Read.</p>
+        <div class="text-sm"><b class="text-success">+</b> Most distinctive and best for local and youth audiences. Poppins covers both Latin and Devanagari, so English and Nepali share one type family.<br><b class="text-error">−</b> Loud colours tire quickly and are harder to keep accessible. It can read as "less established" to institutional funders.</div>
+      </div></div>
+    </label>
+  </div>
+
+  <div class="card bg-base-200"><div class="card-body p-4 gap-3 sm:flex-row sm:items-end">
+    <label class="form-control flex-1"><span class="text-sm opacity-70">Notes (e.g. "1 but borrow the evidence pillars from 2")</span>
+      <input name="direction-notes" class="input input-bordered w-full mt-1" placeholder="Optional"></label>
+    <button type="submit" class="btn btn-primary">Queue direction choice</button>
+  </div></div>
+  </form>
+  <p class="text-sm opacity-70"><b>Why 1 is recommended:</b> READI's most urgent gaps are donations and trust, and the biggest audience is people abroad who already know Nepal. Direction 1 serves them best. Direction 2's evidence pillars (number + source + link) can be added to it at no cost. The real risk is photography, not the design.</p>
+</section>
+
+<!-- DECISIONS -->
+<section id="decisions" class="block space-y-4">
+  <h2 class="text-2xl font-bold">Other decisions I need from you</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <form data-lavish-question="platform" class="card bg-base-200" onsubmit="event.preventDefault(); const c=new FormData(event.currentTarget).get('platform'); if(c) window.lavish?.queuePrompt('Platform: '+c, {tag:'choice', text:'Platform: '+c, element:event.currentTarget, data:{question:'platform', answer:c}});">
+      <div class="card-body p-5 gap-2">
+        <h3 class="font-semibold">Platform</h3>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="platform" value="Fresh WordPress 6 + block theme" checked><span><b>Fresh WordPress 6 + a block theme</b> (recommended). Volunteers can already edit WordPress, Polylang handles Nepali, and plugins cover eSewa and Stripe. Cheap shared hosting in Nepal.</span></label>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="platform" value="Astro static site + headless CMS"><span><b>Astro static site + a headless CMS</b>. Fastest and safest, with free hosting, but harder for volunteers to change.</span></label>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="platform" value="Next.js"><span><b>Next.js</b>. Very flexible, but too much for a site of about 15 pages.</span></label>
+        <button class="btn btn-sm btn-primary self-start mt-1">Queue answer</button>
+      </div>
+    </form>
+
+    <form data-lavish-question="payments" class="card bg-base-200" onsubmit="event.preventDefault(); const v=[...event.currentTarget.querySelectorAll('input[name=pay]:checked')].map(i=>i.value); if(v.length) window.lavish?.queuePrompt('Donation methods: '+v.join(', '), {tag:'choice', text:'Payments: '+v.join(', '), element:event.currentTarget, data:{question:'payments', answer:v}});">
+      <div class="card-body p-5 gap-2">
+        <h3 class="font-semibold">How should people donate?</h3>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="pay" value="eSewa / Khalti" checked><span><b>eSewa / Khalti</b>, for donors inside Nepal</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="pay" value="Card via Stripe or PayPal" checked><span><b>Card via Stripe or PayPal</b>, for donors abroad. Check whether READI's registration allows receiving foreign funds (SWC rules).</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="pay" value="Bank transfer details" checked><span><b>Bank transfer details</b>, already in use (RBB Simikot)</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="pay" value="Monthly giving"><span><b>Monthly giving</b>, which needs Stripe or PayPal subscriptions</span></label>
+        <button class="btn btn-sm btn-primary self-start mt-1">Queue answer</button>
+      </div>
+    </form>
+
+    <form data-lavish-question="language" class="card bg-base-200" onsubmit="event.preventDefault(); const c=new FormData(event.currentTarget).get('lang'); if(c) window.lavish?.queuePrompt('Language approach: '+c, {tag:'choice', text:'Language: '+c, element:event.currentTarget, data:{question:'language', answer:c}});">
+      <div class="card-body p-5 gap-2">
+        <h3 class="font-semibold">Nepali language</h3>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="lang" value="Full bilingual at launch" checked><span><b>Full bilingual at launch</b> (/ne/ mirror, BRAC-style toggle)</span></label>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="lang" value="English first, key pages in Nepali"><span><b>English first</b>, with Home, About, Donate and Contact in Nepali</span></label>
+        <label class="flex gap-2 text-sm"><input type="radio" class="radio radio-sm" name="lang" value="English only for now"><span><b>English only for now</b></span></label>
+        <button class="btn btn-sm btn-primary self-start mt-1">Queue answer</button>
+      </div>
+    </form>
+
+    <form data-lavish-question="content" class="card bg-base-200" onsubmit="event.preventDefault(); const v=[...event.currentTarget.querySelectorAll('input[name=have]:checked')].map(i=>i.value); window.lavish?.queuePrompt('Content READI can provide: '+(v.join(', ')||'none yet'), {tag:'choice', text:'Content available: '+v.length+' items', element:event.currentTarget, data:{question:'content', answer:v}});">
+      <div class="card-body p-5 gap-2">
+        <h3 class="font-semibold">What content can READI give us? <span class="opacity-60 font-normal text-sm">(this is what blocks the build)</span></h3>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="SWC/DAO registration no. + founding year"><span>SWC/DAO registration number and founding year</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="Team & board names, roles, photos"><span>Team and board names, roles and photos</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="New high-res photos (with consent)"><span>New high-resolution photos (with consent)</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="Annual/audit reports"><span>Annual or audit reports</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="Impact numbers 2017–2026"><span>Impact numbers for 2017–2026</span></label>
+        <label class="flex gap-2 text-sm"><input type="checkbox" class="checkbox checkbox-sm" name="have" value="Logo source (vector)"><span>Logo source file (vector)</span></label>
+        <button class="btn btn-sm btn-primary self-start mt-1">Queue answer</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="block space-y-4">
+  <h2 class="text-2xl font-bold">Roadmap</h2>
+  <ul class="steps steps-vertical md:steps-horizontal w-full">
+    <li class="step step-primary" data-content="1">Content &amp; IA<br><span class="text-xs opacity-70">wk 1–2: gather assets, rewrite copy</span></li>
+    <li class="step" data-content="2">Design<br><span class="text-xs opacity-70">wk 2–3: home, program and donate pages</span></li>
+    <li class="step" data-content="3">Build<br><span class="text-xs opacity-70">wk 3–5: theme, payments, Nepali</span></li>
+    <li class="step" data-content="4">Migrate &amp; launch<br><span class="text-xs opacity-70">wk 6: 301 redirects, HTTPS, analytics</span></li>
+  </ul>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="card bg-base-200"><div class="card-body p-5">
+      <h3 class="font-semibold">Risks</h3>
+      <ul class="list-disc pl-5 text-sm space-y-1 opacity-90">
+        <li><b>Content, not code, is the bottleneck.</b> The new site will look empty without new photos and numbers.</li>
+        <li>Foreign-donation rules can limit Stripe/PayPal. Confirm with READI's registration status.</li>
+        <li>Keep old URLs (<code>/nutrition-and-health/</code> etc.) working with 301 redirects to protect search ranking.</li>
+        <li>The public bank details and personal Gmail addresses should move to an organizational email.</li>
+        <li>Photos of malnourished children need consent and dignity guidelines before publishing.</li>
+      </ul>
+    </div></div>
+    <div class="card bg-base-200"><div class="card-body p-5">
+      <h3 class="font-semibold">Open questions</h3>
+      <ul class="list-disc pl-5 text-sm space-y-1 opacity-90">
+        <li>Who maintains the site after launch, a volunteer or a staff member?</li>
+        <li>Is the ActionAid relationship current, and can READI show the logo?</li>
+        <li>Is Humla Delights Bakery still running? It could become a "Shop / Visit" story.</li>
+        <li>Is there a domain or hosting budget, and who controls the readi.org.np DNS?</li>
+      </ul>
+    </div></div>
+  </div>
+  <p class="text-xs opacity-60">Sources: a crawl of readi.org.np (14 pages, Nov 2026) and visits to the 9 reference sites. The design source is Lavish's DaisyUI fallback, because READI has no design system worth keeping. The mocks use their own palettes. The reference sites' moods are partly based on their known branding, because the crawl only returned text.</p>
+</section>
+</main>
+</body>
+</html>

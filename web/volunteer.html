@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volunteer with READI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Mukta:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site-inner.css">
+<style>
+  .video { position: relative; aspect-ratio: 16/9; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 50px rgba(11,46,92,.2); background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .areas { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+  .area { background: #fff; border-radius: 8px; padding: 26px; box-shadow: 0 10px 28px rgba(11,46,92,.08); border-top: 4px solid var(--crimson); }
+  .area h3 { margin: 0 0 8px; color: var(--navy); font-size: 21px; } .area p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .area ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .schools { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .school { display: grid; grid-template-columns: 150px 1fr; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 28px rgba(11,46,92,.08); }
+  .school img { width: 100%; height: 100%; object-fit: cover; min-height: 150px; }
+  .school div { padding: 20px 22px; } .school h3 { margin: 0 0 4px; color: var(--navy); } .school p { margin: 0; color: var(--muted); font-size: 15px; }
+  .school small { display: block; margin-top: 8px; color: var(--tan); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .contact-card { background: var(--navy); color: #fff; border-radius: 10px; padding: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact-card h3 { margin: 0 0 6px; } .contact-card p { margin: 0; opacity: .85; }
+  .contact-card a { color: var(--gold); font-weight: 700; }
+  .steps-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; counter-reset: s; }
+  .steps-row div { background: #fff; border-radius: 8px; padding: 22px; box-shadow: 0 6px 18px rgba(11,46,92,.06); counter-increment: s; }
+  .steps-row div::before { content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--crimson); color: #fff; font-weight: 800; margin-bottom: 10px; }
+  .steps-row h3 { margin: 0 0 4px; color: var(--navy); font-size: 18px; } .steps-row p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 900px) { .areas, .schools, .contact-card, .steps-row { grid-template-columns: 1fr; } .school { grid-template-columns: 1fr; } .school img { height: 180px; } }
+</style>
+<link rel="alternate" hreflang="ne" href="ne/volunteer.html">
+</head>
+<body class="paper">
+
+<header class="site">
+  <div class="wrap">
+    <a class="badge-logo" href="readi-home-concept.html" aria-label="READI Nepal home"><img src="brand/readi-logo-transparent.png" alt="READI, Rural Empowerment &amp; Development Initiative" width="85" height="92"></a>
+    <nav class="main" aria-label="Main">
+      <a href="about.html">About</a><a href="children-home.html">Children's Home</a><a href="our-work.html">Our Work</a><a href="volunteer.html" aria-current="page">Volunteer</a><a href="gallery.html">Gallery</a><a href="story-childrens-home.html">Stories</a>
+      <a href="ne/volunteer.html" class="lang" lang="ne" hreflang="ne">नेपाली</a>
+      <a href="donate.html" class="btn btn-crimson">Donate</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<section class="page-hero" style="--img:url('photos/gallery/vol-IMG-20170827-WA0102.jpg')">
+  <div class="wrap">
+    <div class="crumbs"><a href="readi-home-concept.html">Home</a> / <a href="our-work.html">Get involved</a> / Volunteer</div>
+    <h1>Live, learn and serve in the Himalaya</h1>
+    <p>Our International Volunteer Program offers 2 to 6 weeks of cultural, language and educational immersion with local communities in Nepal.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="facts reveal">
+    <div><b>2–6</b><span>weeks, from minimum to maximum stay</span></div>
+    <div><b>2</b><span>partner schools, in Simikot and Changunarayan</span></div>
+    <div><b>21</b><span>days: the summer group program with AIPC Pandora, Madrid</span></div>
+    <div><b>Homestay</b><span>living with host families</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="pill pill-crimson">The program</span>
+      <h2>Experiential learning, with community service at its heart</h2>
+      <p>READI has hosted volunteers from around the world. They join our community projects, work alongside local people every day, and stay with host families to learn through cultural exchange.</p>
+      <p>The program follows a global service-learning approach. Community service comes first, homestays are recommended, and each project has a clear theme. For many young people it becomes a once-in-a-lifetime experience that shapes how they lead and serve.</p>
+    </div>
+    <div class="video reveal">
+      <iframe src="https://www.youtube-nocookie.com/embed/YF1zQTJkQfc" title="READI volunteer summer program 2017" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="pill pill-gold">Where you can help</span><h2>Areas and projects</h2></div>
+    <div class="areas">
+      <div class="area reveal"><h3>Education &amp; literacy</h3><p>Work with the village primary school:</p><ul><li>Language teaching</li><li>Music and sports</li><li>Storytelling</li><li>Multimedia with schoolchildren</li></ul></div>
+      <div class="area reveal"><h3>Skills &amp; training</h3><p>Help READI's community skills work through technical training, communication and computer education.</p></div>
+      <div class="area reveal"><h3>Environment, health &amp; engineering</h3><p>Volunteer placements are also organized in environment, health, engineering and other relevant areas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="pill pill-crimson">Current placements</span><h2>Two schools, two very different Nepals</h2></div>
+    <div class="schools">
+      <div class="school reveal"><img src="photos/gallery/vol-IMG-20170820-WA0001.jpg" alt="Volunteers leading a sing and dance class"><div><h3>Shree Krishna Primary School</h3><p>Changunarayan, a hilltop village above the Kathmandu Valley, near the UNESCO-listed temple.</p><small>Bhaktapur · with Maresía ONG</small></div></div>
+      <div class="school reveal"><img src="photos/gallery/57-project13.jpg" alt="Schoolchildren in Humla"><div><h3>Shree Balmandir School</h3><p>Simikot, Humla: high in Nepal's far west, home of the READI Children's Home.</p><small>Humla · Karnali Province</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="pill pill-gold">Groups &amp; partners</span><h2>Individuals and organizations welcome</h2>
+      <p>We organize volunteer trips for individuals and organizations abroad. In summer we run a 21-day group Micro-Project Program with AIPC Pandora (Madrid, Spain), and we work with other individuals and organizations in Spain, the US, Canada and the UK.</p></div>
+    <div class="steps-row">
+      <div class="reveal"><h3>Get in touch</h3><p>Email us with your dates, interests and skills.</p></div>
+      <div class="reveal"><h3>Plan together</h3><p>We match you with a school or community project.</p></div>
+      <div class="reveal"><h3>Arrive</h3><p>Meet your host family and the local team.</p></div>
+      <div class="reveal"><h3>Serve &amp; learn</h3><p>2 to 6 weeks of community work and immersion.</p></div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:16px">Fees, visas and what's included still need to be confirmed <span class="tag-tbc">To confirm</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div><h3>Ready to volunteer?</h3><p>Whether you're an individual or an organization, we'd love to hear from you.</p></div>
+      <div>
+        <p>General enquiries<br><a href="mailto:info@readi.org.np">info@readi.org.np</a></p>
+        <p style="margin-top:14px">Head of volunteer program, Mr. Rakesh Shahi<br><a href="mailto:rakeshshahi13@gmail.com">rakeshshahi13@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>READI Nepal</h4><p style="margin:0">Rural Empowerment and Development Initiative<br>Simikot, Humla · P.O. Box 19785, Kathmandu<br>info@readi.org.np</p></div>
+      <div><h4>Our work</h4><a href="children-home.html">Children's Home</a><a href="our-work.html">Education</a><a href="our-work.html">Nutrition &amp; Health</a><a href="gallery.html">Gallery</a></div>
+      <div><h4>Get involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="about.html#partners">Partner with us</a><a href="#">Contact</a></div>
+      <div><h4>Trust</h4><a href="about.html#transparency">Annual reports</a><a href="about.html#partners">Our partners</a><a href="about.html#transparency">Registration</a><a href="https://www.facebook.com/readi.np">Facebook</a></div>
+    </div>
+    <div class="legal"><span>© <span class="yr"></span> READI Nepal · Reg. no. [to confirm]</span></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.yr').forEach(e => e.textContent = new Date().getFullYear());
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ne">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>रेडिसँग स्वयंसेवा गर्नुहोस्</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../site-inner.css">
+<style>
+  .video { position: relative; aspect-ratio: 16/9; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 50px rgba(11,46,92,.2); background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .areas { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+  .area { background: #fff; border-radius: 8px; padding: 26px; box-shadow: 0 10px 28px rgba(11,46,92,.08); border-top: 4px solid var(--crimson); }
+  .area h3 { margin: 0 0 8px; color: var(--navy); font-size: 21px; } .area p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .area ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .schools { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .school { display: grid; grid-template-columns: 150px 1fr; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 28px rgba(11,46,92,.08); }
+  .school img { width: 100%; height: 100%; object-fit: cover; min-height: 150px; }
+  .school div { padding: 20px 22px; } .school h3 { margin: 0 0 4px; color: var(--navy); } .school p { margin: 0; color: var(--muted); font-size: 15px; }
+  .school small { display: block; margin-top: 8px; color: var(--tan); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .contact-card { background: var(--navy); color: #fff; border-radius: 10px; padding: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact-card h3 { margin: 0 0 6px; } .contact-card p { margin: 0; opacity: .85; }
+  .contact-card a { color: var(--gold); font-weight: 700; }
+  .steps-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; counter-reset: s; }
+  .steps-row div { background: #fff; border-radius: 8px; padding: 22px; box-shadow: 0 6px 18px rgba(11,46,92,.06); counter-increment: s; }
+  .steps-row div::before { content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--crimson); color: #fff; font-weight: 800; margin-bottom: 10px; }
+  .steps-row h3 { margin: 0 0 4px; color: var(--navy); font-size: 18px; } .steps-row p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 900px) { .areas, .schools, .contact-card, .steps-row { grid-template-columns: 1fr; } .school { grid-template-columns: 1fr; } .school img { height: 180px; } }
+</style>
+<style>:root{--font: Mukta, Figtree, sans-serif} body{line-height:1.65}</style>
+<link rel="alternate" hreflang="en" href="../volunteer.html">
+</head>
+<body class="paper">
+
+<header class="site">
+  <div class="wrap">
+    <a class="badge-logo" href="readi-home-concept.html" aria-label="रेडि नेपाल गृहपृष्ठ"><img src="../brand/readi-logo-transparent.png" alt="रेडि, ग्रामीण सशक्तिकरण तथा विकास पहल" width="85" height="92"></a>
+    <nav class="main" aria-label="मुख्य">
+      <a href="about.html">हाम्रो बारेमा</a><a href="children-home.html">बाल गृह</a><a href="our-work.html">हाम्रो काम</a><a href="volunteer.html" aria-current="page">स्वयंसेवा</a><a href="gallery.html">तस्बिरहरू</a><a href="story-childrens-home.html">कथाहरू</a>
+      <a href="../volunteer.html" class="lang" lang="en" hreflang="en">English</a>
+      <a href="donate.html" class="btn btn-crimson">सहयोग गर्नुहोस्</a>
+    </nav>
+    <button class="menu-toggle" aria-label="मेनु खोल्नुहोस्">☰</button>
+  </div>
+</header>
+
+<section class="page-hero" style="--img:url('../photos/gallery/vol-IMG-20170827-WA0102.jpg')">
+  <div class="wrap">
+    <div class="crumbs"><a href="readi-home-concept.html">गृहपृष्ठ</a> / <a href="our-work.html">सहभागी हुनुहोस्</a> / स्वयंसेवा</div>
+    <h1>हिमालको काखमा बस्नुहोस्, सिक्नुहोस् र सेवा गर्नुहोस्</h1>
+    <p>हाम्रो अन्तर्राष्ट्रिय स्वयंसेवक कार्यक्रमले नेपालका स्थानीय समुदायसँगै बसेर संस्कृति, भाषा र शिक्षामा डुब्ने २ देखि ६ हप्तासम्मको अवसर दिन्छ।</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="facts reveal">
+    <div><b>२–६</b><span>हप्ता, न्यूनतमदेखि अधिकतम बसाइ</span></div>
+    <div><b>२</b><span>साझेदार विद्यालय, सिमिकोट र चाँगुनारायणमा</span></div>
+    <div><b>२१</b><span>दिन: एआईपीसी पान्डोरा (AIPC Pandora), म्याड्रिड, स्पेनसँगको गर्मी याममा हुने सामूहिक कार्यक्रम</span></div>
+    <div><b>होमस्टे</b><span>आतिथ्य परिवारसँगको बसाइ</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="pill pill-crimson">कार्यक्रम</span>
+      <h2>अनुभवबाट सिकाइ, जसको मुटुमा छ सामुदायिक सेवा</h2>
+      <p>रेडिले संसारभरिका स्वयंसेवकहरूलाई स्वागत गर्दै आएको छ। उनीहरू हाम्रा सामुदायिक परियोजनामा जोडिन्छन्, हरेक दिन स्थानीय मानिसहरूसँग काँधमा काँध मिलाएर काम गर्छन्, र आतिथ्य परिवारसँग बसेर सांस्कृतिक आदानप्रदानमार्फत सिक्छन्।</p>
+      <p>यो कार्यक्रम विश्वव्यापी सेवा-सिकाइ पद्धतिमा आधारित छ। सामुदायिक सेवा पहिलो प्राथमिकता हो, होमस्टेमा बस्न सुझाव दिइन्छ, र हरेक परियोजनाको स्पष्ट विषय हुन्छ। धेरै युवाहरूका लागि यो जीवनमा एकपटक मात्र आउने अनुभव बन्छ, जसले उनीहरूको नेतृत्व र सेवा गर्ने तरिकालाई नै आकार दिन्छ।</p>
+    </div>
+    <div class="video reveal">
+      <iframe src="https://www.youtube-nocookie.com/embed/YF1zQTJkQfc" title="रेडि स्वयंसेवक गर्मी कार्यक्रम २०१७" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="pill pill-gold">तपाईं कहाँ सहयोग गर्न सक्नुहुन्छ</span><h2>क्षेत्र र परियोजनाहरू</h2></div>
+    <div class="areas">
+      <div class="area reveal"><h3>शिक्षा तथा साक्षरता</h3><p>गाउँको आधारभूत विद्यालयसँग मिलेर काम:</p><ul><li>भाषा शिक्षण</li><li>सङ्गीत र खेलकुद</li><li>कथावाचन</li><li>विद्यार्थीहरूसँग मल्टिमिडिया</li></ul></div>
+      <div class="area reveal"><h3>सीप तथा तालिम</h3><p>प्राविधिक तालिम, सञ्चार र कम्प्युटर शिक्षामार्फत रेडिको सामुदायिक सीप विकास कार्यमा सहयोग गर्नुहोस्।</p></div>
+      <div class="area reveal"><h3>वातावरण, स्वास्थ्य तथा इन्जिनियरिङ</h3><p>वातावरण, स्वास्थ्य, इन्जिनियरिङ र अन्य सान्दर्भिक क्षेत्रमा पनि स्वयंसेवकहरूको खटनको व्यवस्था गरिन्छ।</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="pill pill-crimson">हालका खटन स्थलहरू</span><h2>दुई विद्यालय, नेपालका दुई बेग्लै रूप</h2></div>
+    <div class="schools">
+      <div class="school reveal"><img src="../photos/gallery/vol-IMG-20170820-WA0001.jpg" alt="गीत र नृत्य कक्षा चलाउँदै स्वयंसेवकहरू"><div><h3>श्री कृष्ण आधारभूत विद्यालय</h3><p>चाँगुनारायण, काठमाडौं उपत्यकामाथिको डाँडामा रहेको गाउँ, युनेस्को सूचीमा परेको मन्दिर नजिकै।</p><small>भक्तपुर · मारेसिया (Maresía ONG), स्पेनसँग</small></div></div>
+      <div class="school reveal"><img src="../photos/gallery/57-project13.jpg" alt="हुम्लाका विद्यार्थीहरू"><div><h3>श्री बालमन्दिर विद्यालय</h3><p>सिमिकोट, हुम्ला: नेपालको सुदूर पश्चिमको उचाइमा, रेडि बाल गृह रहेको ठाउँ।</p><small>हुम्ला · कर्णाली प्रदेश</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="pill pill-gold">समूह तथा साझेदारहरू</span><h2>व्यक्ति र संस्था दुवैलाई स्वागत छ</h2>
+      <p>हामी विदेशका व्यक्ति तथा संस्थाहरूका लागि स्वयंसेवा यात्राको व्यवस्था गर्छौं। गर्मी याममा एआईपीसी पान्डोरा (AIPC Pandora), म्याड्रिड, स्पेनसँग मिलेर २१ दिने सामूहिक माइक्रो-प्रोजेक्ट कार्यक्रम सञ्चालन गर्छौं, र स्पेन, अमेरिका, क्यानडा तथा बेलायतका अन्य व्यक्ति र संस्थाहरूसँग पनि काम गर्छौं।</p></div>
+    <div class="steps-row">
+      <div class="reveal"><h3>सम्पर्क गर्नुहोस्</h3><p>आफ्ना मिति, रुचि र सीपबारे हामीलाई इमेल गर्नुहोस्।</p></div>
+      <div class="reveal"><h3>सँगै योजना बनाऔं</h3><p>हामी तपाईंलाई उपयुक्त विद्यालय वा सामुदायिक परियोजनासँग जोड्छौं।</p></div>
+      <div class="reveal"><h3>आइपुग्नुहोस्</h3><p>आफ्नो आतिथ्य परिवार र स्थानीय टोलीसँग भेट्नुहोस्।</p></div>
+      <div class="reveal"><h3>सेवा गर्नुहोस्, सिक्नुहोस्</h3><p>२ देखि ६ हप्तासम्म सामुदायिक काम र स्थानीय जीवनमा घुलमिल।</p></div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:16px">शुल्क, भिसा र के-के समावेश छ भन्ने कुरा अझै पुष्टि हुन बाँकी छ <span class="tag-tbc">पुष्टि गर्न बाँकी</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div><h3>स्वयंसेवा गर्न तयार हुनुहुन्छ?</h3><p>तपाईं व्यक्ति हुनुहोस् वा संस्था, हामी तपाईंसँग कुरा गर्न उत्सुक छौं।</p></div>
+      <div>
+        <p>सामान्य जिज्ञासा<br><a href="mailto:info@readi.org.np">info@readi.org.np</a></p>
+        <p style="margin-top:14px">स्वयंसेवक कार्यक्रम प्रमुख, श्री राकेश शाही<br><a href="mailto:rakeshshahi13@gmail.com">rakeshshahi13@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>रेडि नेपाल</h4><p style="margin:0">ग्रामीण सशक्तिकरण तथा विकास पहल<br>सिमिकोट, हुम्ला · पो.ब.नं. १९७८५, काठमाडौं<br>info@readi.org.np</p></div>
+      <div><h4>हाम्रो काम</h4><a href="children-home.html">बाल गृह</a><a href="our-work.html">शिक्षा</a><a href="our-work.html">पोषण तथा स्वास्थ्य</a><a href="gallery.html">तस्बिरहरू</a></div>
+      <div><h4>सहभागी हुनुहोस्</h4><a href="donate.html">सहयोग गर्नुहोस्</a><a href="volunteer.html">स्वयंसेवा</a><a href="about.html#partners">हामीसँग साझेदारी गर्नुहोस्</a><a href="#">सम्पर्क</a></div>
+      <div><h4>पारदर्शिता</h4><a href="about.html#transparency">वार्षिक प्रतिवेदन</a><a href="about.html#partners">हाम्रा साझेदारहरू</a><a href="about.html#transparency">दर्ता</a><a href="https://www.facebook.com/readi.np">फेसबुक</a></div>
+    </div>
+    <div class="legal"><span>© <span class="yr"></span> रेडि नेपाल · दर्ता नं. [पुष्टि गर्न बाँकी]</span></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.yr').forEach(e => e.textContent = String(new Date().getFullYear()).replace(/d/g, d => '०१२३४५६७८९'[d]));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
