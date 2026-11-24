@@ -11,7 +11,7 @@ The concept is a set of static HTML pages, in English and Nepali, that use READI
 You need [Node.js](https://nodejs.org/). Nothing else needs installing.
 
 ```powershell
-node tools/serve.mjs .lavish 4399
+node tools/serve.mjs web 4399
 ```
 
 Then open:
@@ -25,7 +25,7 @@ The `.html` files also open directly from disk. The server is still better, beca
 
 ## Pages
 
-Each page exists in English (`.lavish/`) and Nepali (`.lavish/ne/`) under the same filename. The **नेपाली / English** link in the header switches between a page and its twin.
+Each page exists in English (`web/`) and Nepali (`web/ne/`) under the same filename. The **नेपाली / English** link in the header switches between a page and its twin.
 
 | Page | File | What's on it |
 |---|---|---|
@@ -47,8 +47,8 @@ Each page exists in English (`.lavish/`) and Nepali (`.lavish/ne/`) under the sa
 readi-redesign/
 ├── README.md
 ├── tools/
-│   └── serve.mjs              # tiny static server (node tools/serve.mjs .lavish 4399)
-└── .lavish/
+│   └── serve.mjs              # tiny static server (node tools/serve.mjs web 4399)
+└── web/
     ├── *.html                 # English pages
     ├── ne/*.html              # Nepali pages (same filenames)
     ├── site.css               # shared base styles (tokens, header, buttons, sections)
@@ -92,7 +92,7 @@ Inspired by **[americaslands.org](https://americaslands.org/)**. Its navy, crims
 
 ## Nepali version
 
-- **Location:** `.lavish/ne/`, with `<html lang="ne">` and `hreflang` links between twins.
+- **Location:** `web/ne/`, with `<html lang="ne">` and `hreflang` links between twins.
 - **Digits:** years, counts and amounts use Devanagari digits (२००८, रु. २,०००). Account numbers, SWIFT, emails and URLs stay in Latin digits so they can be copied exactly. The Nepali donate form also accepts amounts typed in Devanagari digits.
 - **Glossary** (used across all pages):
 
