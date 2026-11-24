@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/web/readi-home-concept.html",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "destination": "/web/readi-home-concept.html",
+      "permanent": false
+    }
+  ]
+}
