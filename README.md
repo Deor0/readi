@@ -23,6 +23,16 @@ The `.html` files also open directly from disk. The server is still better, beca
 
 ---
 
+## Deploy
+
+The home page file stays `web/readi-home-concept.html`.
+
+On Vercel, set the project **Root Directory** to `web` when you can. `web/index.html` then sends `/` to that home page, the same way `tools/serve.mjs` does locally.
+
+If the project publishes the repository root, `vercel.json` redirects `/` and `/index.html` to `/web/readi-home-concept.html`. That redirect keeps image and page links working, because the browser loads the home file from `web/`.
+
+---
+
 ## Pages
 
 Each page exists in English (`web/`) and Nepali (`web/ne/`) under the same filename. The **नेपाली / English** link in the header switches between a page and its twin.
